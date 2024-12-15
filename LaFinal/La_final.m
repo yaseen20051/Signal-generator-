@@ -1,3 +1,10 @@
+
+
+
+
+message = input("Open Function Generator (yes or no) : ", 's');
+while (strcmpi(message, 'yes'))
+close all;
 fs = InputSignal.getSampleFrequency(); 
 [startPoint, endPoint, numOfBreakPoints] = InputSignal.getSignalInfo();
 breakpoints = InputSignal.getBreakPoints(numOfBreakPoints,startPoint,endPoint);
@@ -48,5 +55,8 @@ if (strcmpi(message, 'yes'))
         fprintf("None choice !!");
     end
 end 
+
+message = input("Open Function Generator (yes or no) : ", 's');
+end
  
     

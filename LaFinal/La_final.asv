@@ -1,17 +1,16 @@
+
+
+
+
+message = input("Open Function Generator (yes or no) : ", 's');
+if (strcmpi(message, 'yes'))
 fs = InputSignal.getSampleFrequency(); 
 [startPoint, endPoint, numOfBreakPoints] = InputSignal.getSignalInfo();
 breakpoints = InputSignal.getBreakPoints(numOfBreakPoints,startPoint,endPoint);
 startingPoints = [startPoint breakpoints]
 endingPoints = [breakpoints endPoint]
-
-sin.plot;
-
 genertor = GenerateSignal();
-
-genertor.generateSignal(fs,numOfBreakPoints,startingPoints,endingPoints,y,t)
-genertor.y
-genertor.t
-
+[y,t] = genertor.generateSignal(fs,numOfBreakPoints,startingPoints,endingPoints)
 message = input("Do you want to perform an operation on the signal? (yes/no): ", 's');
 if (strcmpi(message, 'yes'))
     proccessor =  SignalProcessor(startingPoints,endingPoints,fs,t,y);
@@ -25,8 +24,39 @@ if (strcmpi(message, 'yes'))
     message = sprintf('Please choose a signal operation  (1-6): '); 
     signalNumber = input(message);
     if(signalNumber == 1)
-        proccessor.amplitudeScaling(5);
+        message = sprintf('Amplitude: '); 
+          amplitude = input(message);
+        proccessor.amplitudeScaling(amplitude);
+ 
+    elseif(signalNumber == 2)
+      
+        proccessor.timeReversal();
+    elseif(signalNumber == 3)
+        message = sprintf('Shift: '); 
+          shift = input(message);
+        proccessor.timeShift(shift);
+    elseif(signalNumber == 4)
+        
+        expandValue = 5;
+        while expandValue>1
+         message = sprintf('expandValue (less than 1) :'); 
+         expandValue = input(message);
+        end
+        proccessor.expandingSignal(expandValue);
+    elseif(signalNumber == 5)
+        compressValue = 0.5;
+        while compressValue<1
+         message = sprintf('compressValue (greater than 1) :'); 
+         compressValue = input(message);
+        end
+        proccessor.expandingSignal(compressValue);
+    else
+        fprintf("None choice !!");
     end
 end 
+hold off
+message = fprintf("Open Function Generator (yes or no) : ");
+choice  = input(message);
+end
  
     
