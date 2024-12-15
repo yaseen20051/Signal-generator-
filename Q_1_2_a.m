@@ -1,0 +1,15 @@
+t = linspace(-0.005, 0.005, 0.01 * 30000);
+m = sinc((10 .^ 3) * t) .^ 2;
+Y = fftshift(fft(m));
+Yphase = angle(Y);
+Yvalue = abs(Y);
+Fvector = linspace(-2000, 2000, 0.01 * 30000);
+figure; subplot(3, 1, 1);
+plot(t, m);
+title('m(t)');
+subplot(3, 1, 2);
+plot(Fvector, Yphase);
+title('Phase');
+subplot(3, 1, 3);
+plot(Fvector, Yvalue);
+title('Magnitude');
