@@ -12,6 +12,7 @@ y_t = exp(-abs(t)/5) .* (u_t_plus_1-u_t_minus_3);
 t1_shifted = 3*t;
 u_t1_plus_1_shifted = t1_shifted>=-1;
 u_t1_minus_3_shifted  = t1_shifted>=3;
+
 y1 =  exp(-abs(t1_shifted)/5) .* (u_t1_plus_1_shifted-u_t1_minus_3_shifted);
 %  Defien y2(t)
 t2_shifted = t+2;
