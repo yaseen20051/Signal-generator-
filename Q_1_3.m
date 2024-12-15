@@ -1,0 +1,15 @@
+nNegative = -10:-1;
+nPositive = 1:10;
+fnNegative = (1 - exp(-1 * pi)) ./ (pi * ( 1 + ( 2 * 1i * nNegative)));
+fnPositive = (1 - exp(-1 * pi)) ./ (pi * ( 1 + ( 2 * 1i * nPositive)));
+F0 = (1 ./ (-1 * pi)) * (exp(-1 *pi) - 1 );
+n=[nNegative, 0, nPositive];
+Fn=[fnNegative, F0, fnPositive];
+subplot(2, 1, 1);
+fnPhase = angle(Fn);
+stem(n,angle(Fn));
+title('Phase');
+fnValue =  abs(Fn);
+subplot(2,1,2);
+stem(n, fnValue);
+title('Amplitude');
