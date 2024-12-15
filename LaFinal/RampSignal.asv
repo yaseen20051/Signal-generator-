@@ -1,0 +1,32 @@
+classdef RampSignal < Signal
+    properties
+      
+        slope;
+        intersect;
+        t;
+        y;
+    end
+
+    methods
+        function rampSignal = RampSignal(startPoint,endPoint,slope,intersect,fs)
+            if nargin>0
+              
+                rampSignal.slope = slope;
+                rampSignal.intersect = intersect;
+
+                rampSignal.t = linspace(startPoint,endPoint,(endPoint-startPoint)*fs)
+             
+            end
+        end
+        
+        function plot(self)
+            figure
+            plot(self.t,self.y);
+  
+        end
+
+   
+
+
+    end
+end

@@ -1,0 +1,32 @@
+fs = InputSignal.getSampleFrequency(); 
+[startPoint, endPoint, numOfBreakPoints] = InputSignal.getSignalInfo();
+breakpoints = InputSignal.getBreakPoints(numOfBreakPoints,startPoint,endPoint);
+startingPoints = [startPoint breakpoints]
+endingPoints = [breakpoints endPoint]
+
+sin.plot;
+
+genertor = GenerateSignal();
+
+genertor.generateSignal(fs,numOfBreakPoints,startingPoints,endingPoints,y,t)
+genertor.y
+genertor.t
+
+message = input("Do you want to perform an operation on the signal? (yes/no): ", 's');
+if (strcmpi(message, 'yes'))
+    proccessor =  SignalProcessor(startingPoints,endingPoints,fs,t,y);
+    fprintf("Choose an operation to perform:\n");
+    fprintf("1) Amplitude Scaling\n");
+    fprintf("2) Time Reversal\n");
+    fprintf("3) Time Shift\n");
+    fprintf("4) Expanding the Signal\n");
+    fprintf("5) Compressing the Signal\n");
+    fprintf("6) None\n");
+    message = sprintf('Please choose a signal operation  (1-6): '); 
+    signalNumber = input(message);
+    if(signalNumber == 1)
+        proccessor.amplitudeScaling(5);
+    end
+end 
+ 
+    
