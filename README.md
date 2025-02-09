@@ -58,7 +58,7 @@ This project focuses on generating and analyzing signals (e.g., sine waves, squa
 
 ## Installation 
  Clone the repository:
-   git clone https://github.com/your-username/signal-generation-matlab.git
+   git clone https://github.com/yaseen20051/Signal-generator-.git
 
 ---
 ## Contributing 
