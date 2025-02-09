@@ -1,0 +1,40 @@
+classdef PolynomialSignal < Signal
+    properties
+      
+        coefficients;
+        power;
+        intercept;
+        t;
+        y;
+    end
+
+    methods
+        function polynomialSignal = PolynomialSignal(startPoint,endPoint,coefficients,power,intercept,fs)
+            if nargin>0
+              
+                polynomialSignal.coefficients = coefficients;
+                polynomialSignal.intercept = intercept;
+                polynomialSignal.t = linspace(startPoint,endPoint,(endPoint-startPoint)*fs);
+                polynomialSignal.power = power;
+                for i = 1:power
+                    polynomialSignal.y = coefficients(i)*()
+                end
+
+               
+
+
+             
+            end
+        end
+        
+        function plot(self)
+            figure
+            plot(self.t,self.y);
+  
+        end
+
+   
+
+
+    end
+end

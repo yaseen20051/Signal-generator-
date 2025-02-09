@@ -1,0 +1,64 @@
+classdef SignalProcessor 
+    properties
+        t;
+        y;
+        fs;
+        startingPoints = [];
+        endingPoints = []
+    end
+
+    methods
+
+        function signalProcessor = SignalProcessor(startingPoints,endingPoints,fs,t,y)
+            if nargin>0
+              
+                signalProcessor.startingPoints = startingPoints;
+                signalProcessor.endingPoints = endingPoints;
+                signalProcessor.fs  = fs;
+                signalProcessor.t = t
+                signalProcessor.y = y
+
+    
+            end
+        end
+        function amplitudeScaling(self,shiftingValue)
+            self.y = self.y * shiftingValue;
+            plotSignal(self.t,self.y);
+        end
+        function  timeReversal(self)
+            self.t = -fliplr(self.t);
+            self.y = fliplr(self.y);
+            plotSignal(self.t,self.y);
+        end
+        function timeShift(self,shiftingValue)
+            self.t = self.t + shiftingValue;
+            plotSignal(self.t,self.y);
+        end
+        function expandingSignal(self,expandValue)
+            self.t  = self.t * expandValue;
+            plotSignal(self.t,self.y);
+        end
+        function compressingSignal(self,compressValue)
+            self.t  = self.t * compressValue;
+            plotSignal(self.t,self.y);
+        end
+       
+
+        function plotSignal(selft,y)
+                          figure;
+                          plot(t, y, 'r', 'LineWidth', 1.5);
+                          xlabel('Time (s)');
+                          ylabel('Amplitude');
+                          title('Modified Signal');
+                           grid on;
+                  %%         legend('Original Signal', 'Modified Signal'); % Add a legend
+                  %%         drawnow;
+         end
+    end
+
+
+
+    
+
+
+end
